@@ -1,0 +1,294 @@
+/* Coordinator Details Modal Styles */
+
+.modal-body {
+    padding: 30px;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.details-container {
+    background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+    border-radius: 15px;
+    padding: 30px;
+    border: 2px solid #e5e7eb;
+}
+
+.details-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid #3b82f6;
+}
+
+.details-header h3 {
+    color: #1e40af;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.details-header .subtitle {
+    color: #6b7280;
+    font-size: 1rem;
+    font-style: italic;
+}
+
+.details-section {
+    margin-bottom: 30px;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid #3b82f6;
+}
+
+.details-section h4 {
+    color: #1e40af;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+}
+
+.details-section h4::before {
+    content: '📋';
+    font-size: 1.5rem;
+}
+
+.detail-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 15px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.detail-label {
+    font-weight: 700;
+    color: #374151;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.detail-value {
+    color: #1f2937;
+    font-weight: 500;
+}
+
+.detail-value.highlight {
+    color: #3b82f6;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.detail-value.success {
+    color: #059669;
+    font-weight: 700;
+}
+
+.detail-value.price {
+    color: #dc2626;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.description-box {
+    background: #f9fafb;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #e5e7eb;
+    line-height: 1.8;
+    color: #374151;
+    margin-top: 10px;
+}
+
+.team-members-list {
+    background: #f9fafb;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #e5e7eb;
+    margin-top: 15px;
+}
+
+.team-member-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border-left: 3px solid #3b82f6;
+}
+
+.team-member-item:last-child {
+    margin-bottom: 0;
+}
+
+.member-number {
+    background: #3b82f6;
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.member-info {
+    flex: 1;
+}
+
+.member-name {
+    font-weight: 700;
+    color: #1e40af;
+    font-size: 1.05rem;
+    margin-bottom: 3px;
+}
+
+.member-details {
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.leader-badge {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    box-shadow: 0 2px 5px rgba(245, 158, 11, 0.3);
+}
+
+.status-badge-large {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-top: 10px;
+}
+
+.status-active {
+    background: #d1fae5;
+    color: #059669;
+    border: 2px solid #059669;
+}
+
+.status-upcoming {
+    background: #dbeafe;
+    color: #2563eb;
+    border: 2px solid #2563eb;
+}
+
+.status-completed {
+    background: #f3f4f6;
+    color: #6b7280;
+    border: 2px solid #6b7280;
+}
+
+.status-paid {
+    background: #d1fae5;
+    color: #059669;
+    border: 2px solid #059669;
+}
+
+.info-box {
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    border: 2px solid #3b82f6;
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.info-box-icon {
+    font-size: 2rem;
+}
+
+.info-box-text {
+    flex: 1;
+    color: #1e40af;
+    font-weight: 600;
+}
+
+.payment-details {
+    background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+    border: 2px solid #059669;
+    border-radius: 12px;
+    padding: 25px;
+    margin-top: 20px;
+}
+
+.payment-details h4 {
+    color: #059669;
+}
+
+.payment-details h4::before {
+    content: '💳';
+}
+
+.transaction-id-box {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1e40af;
+    text-align: center;
+    border: 2px dashed #3b82f6;
+    margin-top: 10px;
+}
+
+.modal-body::-webkit-scrollbar {
+    width: 10px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: #3b82f6;
+    border-radius: 10px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background: #2563eb;
+}
+
+@media (max-width: 768px) {
+    .detail-row {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+    .detail-label {
+        font-size: 0.9rem;
+    }
+    .team-member-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    .modal-body {
+        padding: 20px;
+    }
+    .details-container {
+        padding: 20px;
+    }
+}

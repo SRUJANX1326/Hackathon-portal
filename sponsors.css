@@ -1,0 +1,535 @@
+/* ============= SPONSOR MANAGEMENT STYLES ============= */
+
+
+/* Coordinator Sponsors Grid */
+
+.sponsors-management-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+
+/* Sponsor Management Card */
+
+.sponsor-manage-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 2px solid #e5e7eb;
+    position: relative;
+    overflow: hidden;
+}
+
+.sponsor-manage-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+}
+
+.sponsor-manage-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border-color: #3b82f6;
+}
+
+.sponsor-manage-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sponsor-tier-badge {
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #1f2937;
+    border: 2px solid #1f2937;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.sponsor-tier-badge-small {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 15px;
+    display: inline-block;
+    border: 2px solid currentColor;
+}
+
+.btn-delete {
+    background: #fee2e2;
+    color: #dc2626;
+    border: 2px solid #dc2626;
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-delete:hover {
+    background: #dc2626;
+    color: white;
+    transform: scale(1.15) rotate(5deg);
+}
+
+.sponsor-logo-container {
+    width: 100%;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f9fafb 0%, #e5e7eb 100%);
+    border-radius: 12px;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 2px dashed #cbd5e1;
+}
+
+.sponsor-logo-large {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+}
+
+.sponsor-logo-wrapper {
+    width: 100%;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f9fafb 0%, #e5e7eb 100%);
+    border-radius: 12px;
+    margin: 15px 0;
+    padding: 20px;
+    border: 2px solid #e5e7eb;
+}
+
+.sponsor-logo {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+}
+
+.sponsor-info h3 {
+    color: #1e40af;
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.sponsor-website {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: #3b82f6;
+    text-decoration: none;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.3s;
+    padding: 8px 12px;
+    background: #eff6ff;
+    border-radius: 8px;
+}
+
+.sponsor-website:hover {
+    color: #1e40af;
+    background: #dbeafe;
+    transform: translateX(3px);
+}
+
+.sponsor-date {
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #e5e7eb;
+}
+
+
+/* ============= MODAL STYLING ============= */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    background: white;
+    margin: 3% auto;
+    padding: 0;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    color: white;
+    padding: 30px;
+    border-radius: 20px 20px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.close {
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+    transition: all 0.3s;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.close:hover {
+    transform: scale(1.2) rotate(90deg);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+
+/* ============= FORM STYLING ============= */
+
+#addSponsorForm {
+    padding: 35px;
+}
+
+#addSponsorForm .form-group {
+    margin-bottom: 25px;
+}
+
+#addSponsorForm label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: #1f2937;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#addSponsorForm input[type="text"],
+#addSponsorForm input[type="url"],
+#addSponsorForm select {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    font-size: 15px;
+    font-family: inherit;
+    transition: all 0.3s;
+    background: #f9fafb;
+}
+
+#addSponsorForm input[type="text"]:focus,
+#addSponsorForm input[type="url"]:focus,
+#addSponsorForm select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+    transform: translateY(-2px);
+}
+
+#addSponsorForm select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%233b82f6' d='M10.293 3.293L6 7.586 1.707 3.293A1 1 0 00.293 4.707l5 5a1 1 0 001.414 0l5-5a1 1 0 10-1.414-1.414z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    padding-right: 45px;
+}
+
+#addSponsorForm input[type="file"] {
+    width: 100%;
+    padding: 16px;
+    border: 3px dashed #cbd5e1;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+    background: #f9fafb;
+}
+
+#addSponsorForm input[type="file"]:hover {
+    border-color: #3b82f6;
+    background: #eff6ff;
+    transform: scale(1.02);
+}
+
+#addSponsorForm input[type="file"]:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+#addSponsorForm small {
+    display: block;
+    margin-top: 8px;
+    color: #6b7280;
+    font-size: 0.85rem;
+    font-style: italic;
+}
+
+
+/* Logo Preview */
+
+.logo-preview {
+    margin-top: 20px;
+    text-align: center;
+    padding: 20px;
+    background: #f9fafb;
+    border-radius: 12px;
+    border: 2px solid #e5e7eb;
+}
+
+.logo-preview img {
+    max-width: 250px;
+    max-height: 250px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 3px solid white;
+}
+
+
+/* Form Actions */
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 35px;
+    padding-top: 25px;
+    border-top: 2px solid #e5e7eb;
+}
+
+.form-actions .btn {
+    padding: 14px 28px;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+.form-actions .btn-primary {
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.form-actions .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+
+.form-actions .btn-secondary {
+    background: #e5e7eb;
+    color: #1f2937;
+}
+
+.form-actions .btn-secondary:hover {
+    background: #d1d5db;
+    transform: translateY(-2px);
+}
+
+
+/* ============= STUDENT SPONSOR CARDS ============= */
+
+.sponsors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.sponsor-card {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid #e5e7eb;
+    position: relative;
+    overflow: hidden;
+}
+
+.sponsor-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+}
+
+.sponsor-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border-color: #3b82f6;
+}
+
+.sponsor-card h3 {
+    color: #1e40af;
+    margin: 20px 0 15px;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.sponsor-card .btn {
+    margin-top: 15px;
+}
+
+
+/* ============= EMPTY STATE ============= */
+
+.empty-state {
+    text-align: center;
+    padding: 80px 30px;
+    background: linear-gradient(135deg, #f9fafb 0%, #e5e7eb 100%);
+    border-radius: 15px;
+    border: 2px dashed #cbd5e1;
+}
+
+.empty-icon {
+    font-size: 5rem;
+    margin-bottom: 25px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.empty-state h3 {
+    color: #1e40af;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.empty-state p {
+    color: #6b7280;
+    margin-bottom: 30px;
+    font-size: 1.05rem;
+}
+
+
+/* ============= RESPONSIVE ============= */
+
+@media (max-width: 768px) {
+    .sponsors-management-grid,
+    .sponsors-grid {
+        grid-template-columns: 1fr;
+    }
+    .modal-content {
+        width: 95%;
+        margin: 5% auto;
+    }
+    #addSponsorForm {
+        padding: 25px;
+    }
+    .modal-header {
+        padding: 20px;
+    }
+    .modal-header h2 {
+        font-size: 1.3rem;
+    }
+    .form-actions {
+        flex-direction: column;
+    }
+    .form-actions .btn {
+        width: 100%;
+    }
+}
+
+
+/* ============= SCROLLBAR STYLING ============= */
+
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: #3b82f6;
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: #2563eb;
+}

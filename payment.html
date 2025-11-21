@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - Hackathon Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/forms.css">
+</head>
+
+<body>
+    <div class="form-container">
+        <div class="form-wrapper">
+            <div class="form-header">
+                <h1>Payment Gateway</h1>
+                <h2>Complete Your Registration</h2>
+            </div>
+
+            <div class="payment-summary">
+                <h3>Payment Summary</h3>
+                <div class="summary-item">
+                    <span>Hackathon:</span>
+                    <strong id="payHackathonName">-</strong>
+                </div>
+                <div class="summary-item">
+                    <span>Team Name:</span>
+                    <strong id="payTeamName">-</strong>
+                </div>
+                <div class="summary-item">
+                    <span>Number of Members:</span>
+                    <strong id="payMemberCount">-</strong>
+                </div>
+                <div class="summary-item total">
+                    <span>Total Amount:</span>
+                    <strong id="payTotalAmount">₹0</strong>
+                </div>
+            </div>
+
+            <form id="paymentForm" class="payment-form">
+                <h3>Payment Method</h3>
+                <div class="payment-methods">
+                    <label class="payment-method">
+                        <input type="radio" name="paymentMethod" value="upi" checked>
+                        <span>UPI Payment</span>
+                    </label>
+                    <label class="payment-method">
+                        <input type="radio" name="paymentMethod" value="card">
+                        <span>Credit/Debit Card</span>
+                    </label>
+                    <label class="payment-method">
+                        <input type="radio" name="paymentMethod" value="netbanking">
+                        <span>Net Banking</span>
+                    </label>
+                </div>
+
+                <div id="upiSection" class="payment-section">
+                    <div class="form-group">
+                        <label for="upiId">UPI ID</label>
+                        <input type="text" id="upiId" placeholder="yourname@upi">
+                    </div>
+                </div>
+
+                <div id="cardSection" class="payment-section" style="display: none;">
+                    <div class="form-group">
+                        <label for="cardNumber">Card Number</label>
+                        <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="expiryDate">Expiry Date</label>
+                            <input type="text" id="expiryDate" placeholder="MM/YY" maxlength="5">
+                        </div>
+                        <div class="form-group">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" placeholder="123" maxlength="3">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="netbankingSection" class="payment-section" style="display: none;">
+                    <div class="form-group">
+                        <label for="bankSelect">Select Bank</label>
+                        <select id="bankSelect">
+                            <option value="">Choose your bank</option>
+                            <option value="sbi">State Bank of India</option>
+                            <option value="hdfc">HDFC Bank</option>
+                            <option value="icici">ICICI Bank</option>
+                            <option value="axis">Axis Bank</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-large">Pay Now</button>
+            </form>
+
+            <div id="paymentSuccess" class="payment-result" style="display: none;">
+                <div class="success-animation">
+                    <div class="success-icon">✓</div>
+                    <div class="success-checkmark">
+                        <div class="check-icon">
+                            <span class="icon-line line-tip"></span>
+                            <span class="icon-line line-long"></span>
+                            <div class="icon-circle"></div>
+                            <div class="icon-fix"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Payment Successful!</h2>
+                <p class="success-message">Your registration has been confirmed successfully.</p>
+
+                <div class="bill-details">
+                    <h3>Transaction Details</h3>
+                    <div class="detail-row">
+                        <span>Transaction ID:</span>
+                        <strong id="transactionId">-</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>Date & Time:</span>
+                        <strong id="transactionDate">-</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>Amount Paid:</span>
+                        <strong id="amountPaid" style="color: #059669; font-size: 1.3rem;">-</strong>
+                    </div>
+                </div>
+
+                <div class="success-actions">
+                    <button onclick="downloadBill()" class="btn btn-primary btn-large">
+        📥 Download Bill
+    </button>
+                    <a href="student-dashboard.html?success=true" class="btn btn-secondary btn-large">
+        🏠 Go to Dashboard
+    </a>
+                </div>
+
+
+                <p class="note">
+                    💡 <strong>Note:</strong> Your bill has been generated. Click "Download Bill" to save it.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="js/payment.js"></script>
+</body>
+
+</html>

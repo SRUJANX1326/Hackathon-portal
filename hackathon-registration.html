@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register for Hackathon</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/forms.css">
+</head>
+
+<body>
+    <div class="form-container">
+        <div class="form-wrapper registration-form-wrapper">
+            <div class="form-header">
+                <h1>Hackathon Registration</h1>
+                <h2 id="hackathonTitle">Loading...</h2>
+            </div>
+
+            <form id="hackathonRegForm" class="hackathon-registration-form">
+                <div class="section">
+                    <h3>Team Leader Information</h3>
+                    <div class="form-group">
+                        <label for="leaderName">Full Name</label>
+                        <input type="text" id="leaderName" required placeholder="Enter team leader name">
+                    </div>
+                    <div class="form-group">
+                        <label for="leaderSRN">SRN Number</label>
+                        <input type="text" id="leaderSRN" required placeholder="Enter SRN">
+                    </div>
+                    <div class="form-group">
+                        <label for="leaderPhone">Phone Number</label>
+                        <input type="tel" id="leaderPhone" required placeholder="Enter phone number">
+                    </div>
+                    <div class="form-group">
+                        <label for="teamName">Team Name</label>
+                        <input type="text" id="teamName" required placeholder="Enter your team name">
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>Team Information</h3>
+                    <div class="form-group">
+                        <label for="numMembers">Number of Team Members (including leader)</label>
+                        <input type="number" id="numMembers" required min="1" placeholder="Enter number of members">
+                        <small id="memberConstraint"></small>
+                    </div>
+                </div>
+
+                <div id="teamMembersSection" class="section" style="display: none;">
+                    <h3>Team Members Details</h3>
+                    <div id="teamMembersContainer">
+                        <!-- Dynamically generated member fields -->
+                    </div>
+                </div>
+
+                <div class="section fee-section">
+                    <h3>Registration Fee</h3>
+                    <div class="fee-details">
+                        <p><strong>Fee per team:</strong> <span id="feeAmount">₹0</span></p>
+                        <p><strong>Number of members:</strong> <span id="memberCount">0</span></p>
+                        <p class="total-fee"><strong>Total Amount:</strong> <span id="totalAmount">₹0</span></p>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-large">Proceed to Payment</button>
+                <a href="student-dashboard.html" class="back-link">← Back to Dashboard</a>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/hackathon.js"></script>
+</body>
+
+</html>

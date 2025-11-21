@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Hackathon Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/forms.css">
+</head>
+
+<body>
+    <div class="form-container">
+        <div class="form-wrapper">
+            <div class="form-header">
+                <h1>SAPTHAGIRI NPS UNIVERSITY</h1>
+                <h2>Register for Hackathon Portal</h2>
+            </div>
+
+            <!-- User Type Selection -->
+            <div class="user-type-selection">
+                <button class="type-btn active" data-type="student">Student Registration</button>
+                <button class="type-btn" data-type="coordinator">Coordinator Registration</button>
+            </div>
+
+            <!-- Student Registration Form -->
+            <form id="studentRegForm" class="registration-form">
+                <div class="form-group">
+                    <label for="regStudentName">Full Name</label>
+                    <input type="text" id="regStudentName" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="regStudentSRN">SRN Number</label>
+                    <input type="text" id="regStudentSRN" required placeholder="Enter your SRN">
+                </div>
+                <div class="form-group">
+                    <label for="regStudentEmail">Email</label>
+                    <input type="email" id="regStudentEmail" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="regStudentPhone">Phone Number</label>
+                    <input type="tel" id="regStudentPhone" required placeholder="Enter your phone number">
+                </div>
+                <div class="form-group">
+                    <label for="regStudentPassword">Password</label>
+                    <input type="password" id="regStudentPassword" required placeholder="Create a password">
+                </div>
+                <div class="form-group">
+                    <label for="regStudentConfirmPassword">Confirm Password</label>
+                    <input type="password" id="regStudentConfirmPassword" required placeholder="Confirm your password">
+                </div>
+                <button type="submit" class="btn btn-primary">Register as Student</button>
+                <p class="form-link">Already have an account? <a href="login.html">Login here</a></p>
+            </form>
+
+            <!-- Coordinator Registration Form -->
+            <form id="coordinatorRegForm" class="registration-form" style="display: none;">
+                <div class="form-group">
+                    <label for="regCoordName">Full Name</label>
+                    <input type="text" id="regCoordName" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="regCoordEmail">Email</label>
+                    <input type="email" id="regCoordEmail" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="regCoordPhone">Phone Number</label>
+                    <input type="tel" id="regCoordPhone" required placeholder="Enter your phone number">
+                </div>
+                <div class="form-group">
+                    <label for="regCoordDepartment">Department</label>
+                    <input type="text" id="regCoordDepartment" required placeholder="Enter your department">
+                </div>
+                <div class="form-group">
+                    <label for="regCoordPassword">Password</label>
+                    <input type="password" id="regCoordPassword" required placeholder="Create a password">
+                </div>
+                <div class="form-group">
+                    <label for="regCoordConfirmPassword">Confirm Password</label>
+                    <input type="password" id="regCoordConfirmPassword" required placeholder="Confirm your password">
+                </div>
+                <div class="form-group">
+                    <label for="regCoordVerification">Verification Code</label>
+                    <input type="text" id="regCoordVerification" required placeholder="Enter coordinator verification code">
+                    <small>Contact admin for verification code</small>
+                </div>
+                <button type="submit" class="btn btn-primary">Register as Coordinator</button>
+                <p class="form-link">Already have an account? <a href="login.html">Login here</a></p>
+            </form>
+
+            <a href="index.html" class="back-link">← Back to Home</a>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+
+</html>

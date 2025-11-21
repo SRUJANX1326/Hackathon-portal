@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coordinator Dashboard - Hackathon Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/tickets.css">
+    <link rel="stylesheet" href="css/sponsors.css">
+    <link rel="stylesheet" href="css/coordinator-modals.css">
+</head>
+
+<body>
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="logo">
+                <h2>SNPS Hackathon Portal - Coordinator</h2>
+            </div>
+            <div class="user-info">
+                <span id="coordName">Welcome, Coordinator</span>
+                <button onclick="logout()" class="btn btn-logout">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <nav class="dashboard-nav">
+        <a href="#" class="nav-item active" data-tab="overview">
+            <span>📊</span> Overview
+        </a>
+        <a href="#" class="nav-item" data-tab="addhackathon">
+            <span>➕</span> Add Hackathon
+        </a>
+        <a href="#" class="nav-item" data-tab="manage">
+            <span>⚙️</span> Manage Hackathons
+        </a>
+        <a href="#" class="nav-item" data-tab="registrations">
+            <span>👥</span> Registrations
+        </a>
+        <a href="#" class="nav-item" data-tab="tickets">
+            <span>🎫</span> Support Tickets
+            <span class="badge" id="coordTicketBadge" style="display: none;">0</span>
+        </a>
+        <a href="#" class="nav-item" data-tab="sponsors">
+            <span>🤝</span> Manage Sponsors
+        </a>
+        <a href="#" class="nav-item" data-tab="livestats">
+            <span>📈</span> Live Stats
+        </a>
+    </nav>
+
+    <main class="dashboard-main">
+        <div class="container">
+            <div id="overviewTab" class="tab-content active">
+                <h2>Dashboard Overview</h2>
+                <div class="stats-grid">
+                    <div class="stat-card-large">
+                        <h3 id="totalHackathonsCount">0</h3>
+                        <p>Total Hackathons</p>
+                    </div>
+                    <div class="stat-card-large">
+                        <h3 id="totalRegistrationsCount">0</h3>
+                        <p>Total Registrations</p>
+                    </div>
+                    <div class="stat-card-large">
+                        <h3 id="activeHackathonsCount">0</h3>
+                        <p>Active Hackathons</p>
+                    </div>
+                    <div class="stat-card-large">
+                        <h3 id="totalParticipantsCount">0</h3>
+                        <p>Total Participants</p>
+                    </div>
+                </div>
+                <div style="margin-top: 40px;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 20px;">Recent Activity</h3>
+                    <div id="recentActivity" class="activity-list"></div>
+                </div>
+            </div>
+
+            <div id="addhackathonTab" class="tab-content">
+                <h2>Add New Hackathon</h2>
+                <div id="addHackathonMessage" class="message-box"></div>
+                <form id="addHackathonForm" class="hackathon-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="hackathonName">Hackathon Name *</label>
+                            <input type="text" id="hackathonName" required placeholder="Enter hackathon name">
+                        </div>
+                        <div class="form-group">
+                            <label for="hackathonPrice">Registration Fee (₹) *</label>
+                            <input type="number" id="hackathonPrice" required min="0" placeholder="Enter fee amount">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="hackathonDate">Event Date *</label>
+                            <input type="date" id="hackathonDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="hackathonTime">Event Time *</label>
+                            <input type="time" id="hackathonTime" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="minMembers">Minimum Members *</label>
+                            <input type="number" id="minMembers" required min="1" max="10" placeholder="Min team size">
+                        </div>
+                        <div class="form-group">
+                            <label for="maxMembers">Maximum Members *</label>
+                            <input type="number" id="maxMembers" required min="1" max="10" placeholder="Max team size">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="hackathonDescription">Description *</label>
+                        <textarea id="hackathonDescription" rows="5" required placeholder="Enter hackathon description and rules"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="hackathonVenue">Venue</label>
+                        <input type="text" id="hackathonVenue" placeholder="Enter venue location">
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <label>
+                            <input type="checkbox" id="requiresVerification">
+                            Requires Coordinator Verification for Registration
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-large">Create Hackathon</button>
+                    <button type="reset" class="btn btn-secondary" style="margin-left: 10px;">Clear Form</button>
+                </form>
+            </div>
+
+            <div id="manageTab" class="tab-content">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                    <h2>Manage Hackathons</h2>
+                    <button onclick="refreshManageList()" class="btn btn-secondary">🔄 Refresh</button>
+                </div>
+                <div id="manageHackathonsList" class="manage-list"></div>
+            </div>
+
+            <div id="registrationsTab" class="tab-content">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                    <h2>All Registrations</h2>
+                    <div>
+                        <button onclick="exportRegistrations()" class="btn btn-secondary">📥 Export CSV</button>
+                        <button onclick="refreshRegistrations()" class="btn btn-secondary" style="margin-left: 10px;">🔄 Refresh</button>
+                    </div>
+                </div>
+                <div class="filter-section">
+                    <label for="filterHackathon">Filter by Hackathon:</label>
+                    <select id="filterHackathon" onchange="filterRegistrations()">
+                        <option value="all">All Hackathons</option>
+                    </select>
+                </div>
+                <div id="allRegistrationsList" class="registrations-table"></div>
+            </div>
+
+            <div id="ticketsTab" class="tab-content">
+                <div class="tab-header">
+                    <h2>Support Tickets Management</h2>
+                    <div>
+                        <select id="ticketFilterStatus" onchange="filterCoordinatorTickets()">
+                            <option value="all">All Status</option>
+                            <option value="Open">Open</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Resolved">Resolved</option>
+                            <option value="Closed">Closed</option>
+                        </select>
+                        <button onclick="refreshCoordinatorTickets()" class="btn btn-secondary" style="margin-left: 10px;">🔄 Refresh</button>
+                    </div>
+                </div>
+                <div class="ticket-stats">
+                    <div class="stat-card">
+                        <h3 id="coordTotalTickets">0</h3>
+                        <p>Total Tickets</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="coordOpenTickets">0</h3>
+                        <p>Open</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="coordInProgressTickets">0</h3>
+                        <p>In Progress</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="coordResolvedTickets">0</h3>
+                        <p>Resolved</p>
+                    </div>
+                </div>
+                <div id="coordinatorTicketsList" class="tickets-list"></div>
+            </div>
+
+            <div id="sponsorsTab" class="tab-content">
+                <div class="tab-header">
+                    <h2>Manage Sponsors</h2>
+                    <button onclick="openAddSponsorModal()" class="btn btn-primary">
+                        ➕ Add New Sponsor
+                    </button>
+                </div>
+                <div id="sponsorsListCoord" class="sponsors-management-grid"></div>
+            </div>
+
+            <div id="livestatsTab" class="tab-content">
+                <h2>Live Statistics</h2>
+                <div class="live-stats-container">
+                    <div class="stats-summary-row">
+                        <div class="stat-box">
+                            <h4>Total Revenue</h4>
+                            <p id="totalRevenue">₹0</p>
+                        </div>
+                        <div class="stat-box">
+                            <h4>Avg Team Size</h4>
+                            <p id="avgTeamSize">0</p>
+                        </div>
+                        <div class="stat-box">
+                            <h4>Most Popular</h4>
+                            <p id="mostPopular">-</p>
+                        </div>
+                    </div>
+                    <div class="chart-section">
+                        <h3>Registrations by Hackathon</h3>
+                        <div id="registrationsChart" class="chart-container"></div>
+                    </div>
+                    <div class="chart-section">
+                        <h3>Team Size Distribution</h3>
+                        <div id="teamSizeChart" class="chart-container"></div>
+                    </div>
+                    <div class="chart-section">
+                        <h3>Registration Timeline</h3>
+                        <div id="timelineChart" class="chart-container"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="coordViewTicketModal" class="modal">
+            <div class="modal-content modal-large">
+                <div class="modal-header">
+                    <h2 id="coordViewTicketNumber">Ticket Details</h2>
+                    <span class="close" onclick="closeCoordViewTicketModal()">&times;</span>
+                </div>
+                <div id="coordViewTicketContent"></div>
+            </div>
+        </div>
+
+        <div id="addSponsorModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Add New Sponsor</h2>
+                    <span class="close" onclick="closeAddSponsorModal()">&times;</span>
+                </div>
+                <form id="addSponsorForm">
+                    <div class="form-group">
+                        <label for="sponsorName">Sponsor Name *</label>
+                        <input type="text" id="sponsorName" required placeholder="Enter sponsor company name" maxlength="100">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sponsorTier">Sponsorship Tier *</label>
+                        <select id="sponsorTier" required>
+                            <option value="">Select tier</option>
+                            <option value="platinum">💎 Platinum Sponsor</option>
+                            <option value="gold">🥇 Gold Sponsor</option>
+                            <option value="silver">🥈 Silver Sponsor</option>
+                            <option value="bronze">🥉 Bronze Sponsor</option>
+                            <option value="community">🤝 Community Partner</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sponsorWebsite">Website URL</label>
+                        <input type="url" id="sponsorWebsite" placeholder="https://example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sponsorLogo">Company Logo * (Max 2MB)</label>
+                        <input type="file" id="sponsorLogo" accept="image/*" required>
+                        <small>Supported formats: JPG, PNG, SVG. Recommended size: 300x300px</small>
+                        <div id="logoPreview" class="logo-preview"></div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Add Sponsor</button>
+                        <button type="button" onclick="closeAddSponsorModal()" class="btn btn-secondary">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="viewHackathonModal" class="modal">
+            <div class="modal-content modal-large">
+                <div class="modal-header">
+                    <h2>Hackathon Details</h2>
+                    <span class="close" onclick="closeViewHackathonModal()">&times;</span>
+                </div>
+                <div id="viewHackathonContent" class="modal-body"></div>
+            </div>
+        </div>
+
+        <div id="viewRegistrationModal" class="modal">
+            <div class="modal-content modal-large">
+                <div class="modal-header">
+                    <h2>Registration Details</h2>
+                    <span class="close" onclick="closeViewRegistrationModal()">&times;</span>
+                </div>
+                <div id="viewRegistrationContent" class="modal-body"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/auth.js"></script>
+    <script src="js/tickets.js"></script>
+    <script src="js/sponsors.js"></script>
+    <script src="js/coordinator.js"></script>
+    <script src="js/coordinator-tickets.js"></script>
+    <script src="js/coordinator-sponsors.js"></script>
+</body>
+
+</html>

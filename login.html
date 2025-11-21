@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Hackathon Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/forms.css">
+</head>
+
+<body>
+    <div class="form-container">
+        <div class="form-wrapper">
+            <div class="form-header">
+                <h1>SAPTHAGIRI NPS UNIVERSITY</h1>
+                <h2>Login to Hackathon Portal</h2>
+            </div>
+
+            <!-- User Type Selection -->
+            <div class="user-type-selection">
+                <button class="type-btn active" data-type="student">Student Login</button>
+                <button class="type-btn" data-type="coordinator">Coordinator Login</button>
+            </div>
+
+            <!-- Student Login Form -->
+            <form id="studentLoginForm" class="login-form">
+                <div class="form-group">
+                    <label for="studentSRN">SRN Number</label>
+                    <input type="text" id="studentSRN" name="srn" required placeholder="Enter your SRN">
+                </div>
+                <div class="form-group">
+                    <label for="studentPassword">Password</label>
+                    <input type="password" id="studentPassword" name="password" required placeholder="Enter password">
+                </div>
+                <button type="submit" class="btn btn-primary">Login as Student</button>
+                <p class="form-link">Don't have an account? <a href="register.html">Register here</a></p>
+            </form>
+
+            <!-- Coordinator Login Form -->
+            <form id="coordinatorLoginForm" class="login-form" style="display: none;">
+                <div class="form-group">
+                    <label for="coordinatorEmail">Email</label>
+                    <input type="email" id="coordinatorEmail" name="email" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="coordinatorPassword">Password</label>
+                    <input type="password" id="coordinatorPassword" name="password" required placeholder="Enter password">
+                </div>
+                <button type="submit" class="btn btn-primary">Login as Coordinator</button>
+                <p class="form-link">Don't have an account? <a href="register.html">Register here</a></p>
+            </form>
+
+            <a href="index.html" class="back-link">← Back to Home</a>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+
+</html>

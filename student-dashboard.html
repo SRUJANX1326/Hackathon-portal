@@ -31,6 +31,9 @@
         <a href="#" class="nav-item" data-tab="myregistrations">
             <span>✅</span> My Registrations
         </a>
+        <a href="#" class="nav-item" data-tab="roomallocation">
+            <span>🏢</span> Room Allocation
+        </a>
         <a href="#" class="nav-item" data-tab="tickets">
             <span>🎫</span> Support Tickets
             <span class="badge" id="ticketBadge" style="display: none;">0</span>
@@ -69,6 +72,15 @@
                 <h2>My Team Registrations</h2>
                 <div id="registrationsList" class="registrations-list"></div>
             </div>
+
+            <div id="roomallocationTab" class="tab-content">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                    <h2>Room Allocation</h2>
+                    <button onclick="displayStudentRoomAllocation()" class="btn btn-secondary">🔄 Refresh</button>
+                </div>
+                <div id="roomAllocationContent"></div>
+            </div>
+
 
             <div id="ticketsTab" class="tab-content">
                 <div class="tab-header">
@@ -167,6 +179,17 @@
                 <div id="viewTicketContent"></div>
             </div>
         </div>
+
+        <div id="roomDetailsModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="roomModalTitle">Room Assignment</h2>
+                    <span class="close" onclick="closeRoomDetailsModal()">&times;</span>
+                </div>
+                <div id="roomModalContent"></div>
+            </div>
+        </div>
+
     </main>
 
     <script src="auth.js"></script>
@@ -174,7 +197,12 @@
     <script src="sponsors.js"></script>
     <script src="student.js"></script>
     <script src="student-tickets.js"></script>
+    <link rel="stylesheet" href="room-allocation.css">
+    <script src="room-allocation.js"></script>
+
+
 </body>
 
+</html>
 
 </html>

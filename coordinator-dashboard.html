@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="tickets.css">
     <link rel="stylesheet" href="sponsors.css">
     <link rel="stylesheet" href="coordinator-modals.css">
+    <link rel="stylesheet" href="room-allocation.css">
 </head>
 
 <body>
@@ -37,6 +38,9 @@
         </a>
         <a href="#" class="nav-item" data-tab="registrations">
             <span>👥</span> Registrations
+        </a>
+        <a href="#" class="nav-item" data-tab="roomallocation">
+            <span>🏢</span> Room Allocation
         </a>
         <a href="#" class="nav-item" data-tab="tickets">
             <span>🎫</span> Support Tickets
@@ -156,6 +160,24 @@
                 <div id="allRegistrationsList" class="registrations-table"></div>
             </div>
 
+            <div id="roomallocationTab" class="tab-content">
+                <div class="tab-header">
+                    <h2>Room Allocation Management</h2>
+                    <div>
+                        <select id="roomFilterHackathon" onchange="filterRoomsByHackathon()">
+                            <option value="all">All Hackathons</option>
+                        </select>
+                        <button onclick="exportRoomAllocations()" class="btn btn-secondary" style="margin-left: 10px;">
+                            📥 Export CSV
+                        </button>
+                        <button onclick="displayCoordinatorRoomManagement()" class="btn btn-secondary" style="margin-left: 10px;">
+                            🔄 Refresh
+                        </button>
+                    </div>
+                </div>
+                <div id="roomManagementContent"></div>
+            </div>
+
             <div id="ticketsTab" class="tab-content">
                 <div class="tab-header">
                     <h2>Support Tickets Management</h2>
@@ -234,6 +256,18 @@
             </div>
         </div>
 
+        <!-- Room Details Modal -->
+        <div id="roomDetailsModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="roomModalTitle">Room Assignment</h2>
+                    <span class="close" onclick="closeRoomDetailsModal()">&times;</span>
+                </div>
+                <div id="roomModalContent"></div>
+            </div>
+        </div>
+
+        <!-- Existing Modals -->
         <div id="coordViewTicketModal" class="modal">
             <div class="modal-content modal-large">
                 <div class="modal-header">
@@ -315,8 +349,7 @@
     <script src="coordinator.js"></script>
     <script src="coordinator-tickets.js"></script>
     <script src="coordinator-sponsors.js"></script>
+    <script src="room-allocation.js"></script>
 </body>
 
-
 </html>
-
